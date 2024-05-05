@@ -81,14 +81,19 @@ export default function ThirdPage() {
         background: "#FEF7ED",
       }}
     >
-      <Group
-        style={{
-          height: "100vh",
-          width: "100vw",
-        }}
-        grow
+      <Flex
+        direction={{ xs: "column-reverse", sm: "row" }}
+        align="center"
+        justify="center"
+        h={{ xs: "auto", md: "100vh" }}
+        w="100vw"
       >
-        <Flex direction="column" justify="center" pl={50}>
+        <Flex
+          direction="column"
+          justify="center"
+          px={{ xs: 20, md: 50 }}
+          w="100%"
+        >
           <Flex
             mb={10}
             p={5}
@@ -117,12 +122,14 @@ export default function ThirdPage() {
               width: "100%",
               border: "3px solid black",
             }}
+            defaultValue="game"
           >
             {items}
           </Accordion>
           <Link href={"https://github.com/imWarrent"} target="_blank">
             <Flex
               mt={10}
+              mb={50}
               p={5}
               justify="center"
               align="center"
@@ -138,7 +145,7 @@ export default function ThirdPage() {
             </Flex>
           </Link>
         </Flex>
-        <Flex direction="column" align="flex-end" p={50}>
+        <Flex direction="column" align="flex-end" p={50} w="100%">
           <Text
             style={{
               fontWeight: "bold",
@@ -173,7 +180,7 @@ export default function ThirdPage() {
             selection of projects that showcase my capabilities.
           </Text>
         </Flex>
-      </Group>
+      </Flex>
       <Flex
         align="center"
         px={20}

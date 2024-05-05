@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { ColorSchemeScript, MantineProvider, createTheme } from "@mantine/core";
 import "@mantine/core/styles.css";
 import { Darker_Grotesque } from "next/font/google";
 
@@ -9,14 +9,18 @@ export const metadata: Metadata = {
   description: "Ren portfolio",
 };
 
-// const workSans = Work_Sans({
-//   subsets: ["latin"],
-//   display: "swap",
-// });
-
 const darkerGrot = Darker_Grotesque({
   subsets: ["latin"],
   display: "swap",
+});
+
+const theme = createTheme({
+  breakpoints: {
+    xs: "0px",
+    sm: "576px",
+    md: "768px",
+    lg: "992px",
+  },
 });
 
 export default function RootLayout({
@@ -30,7 +34,7 @@ export default function RootLayout({
         <ColorSchemeScript />
       </head>
       <body className={darkerGrot.className}>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider theme={theme}>{children}</MantineProvider>
       </body>
     </html>
   );

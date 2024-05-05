@@ -23,7 +23,7 @@ const skills = [
   "MS Access",
   "PostgreSQL",
   "Firebase",
-  "and a lil bit of Flutter."
+  "and a lil bit of Flutter.",
 ];
 
 export default function FourthPage() {
@@ -52,14 +52,20 @@ export default function FourthPage() {
         background: "#FEF7ED",
       }}
     >
-      <Group
-        style={{
-          height: "100vh",
-          width: "100vw",
-        }}
-        grow
+      <Flex
+        direction={{ xs: "column-reverse", sm: "row" }}
+        h={{ xs: "auto", md: "100vh" }}
+        align="center"
+        justify="center"
+        w="100vw"
       >
-        <Flex direction="column" justify="center" pl={50}>
+        <Flex
+          direction="column"
+          justify="center"
+          align="center"
+          mb={20}
+          px={{ xs: 20, md: 50 }}
+        >
           <Flex
             p={10}
             gap={10}
@@ -110,7 +116,7 @@ export default function FourthPage() {
             contribute effectively in dynamic environments.
           </Text>
         </Flex>
-      </Group>
+      </Flex>
     </Flex>
   );
 }

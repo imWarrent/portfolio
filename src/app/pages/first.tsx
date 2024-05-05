@@ -1,6 +1,9 @@
-import { Flex, Group, Text } from "@mantine/core";
+import { Flex, Image, Text } from "@mantine/core";
 import Link from "next/link";
+import { useState } from "react";
 export default function FirstPage() {
+  const [clicked, setClicked] = useState(false);
+
   return (
     <Flex
       direction="column"
@@ -11,14 +14,13 @@ export default function FirstPage() {
         background: "#FEF7ED",
       }}
     >
-      <Group
+      <Flex
+        direction="row"
         style={{
-          // backgroundImage: "url(/images/binding-dark.png)",
           height: "100vh",
         }}
-        grow
       >
-        <Flex direction="column" justify="center" p={50}>
+        <Flex direction="column" justify="center" p={50} w="100%">
           <Text
             mb={15}
             style={{
@@ -28,7 +30,7 @@ export default function FirstPage() {
               lineHeight: "1",
             }}
           >
-            TEMPORARY PORTFOLIO
+            DEV PORTFOLIO
           </Text>
           <hr
             style={{
@@ -99,12 +101,34 @@ export default function FirstPage() {
             </Flex>
           </Link>
         </Flex>
-        <Flex direction="column" justify="center" align="center"></Flex>
-      </Group>
+        <Flex direction="column" justify="center" align="center" w="100%" visibleFrom="sm">
+          {clicked ? (
+            <Image
+              src="/gif/heart.gif"
+              alt="shiba"
+              style={{
+                width: "25%",
+                transform: "scaleX(-1)",
+                marginLeft: 100,
+              }}
+            />
+          ) : undefined}
+          <Image
+            src="/gif/shiba.gif"
+            alt="shiba"
+            style={{ width: "60%", transform: "scaleX(-1)", cursor: "grab" }}
+            onClick={() => setClicked(true)}
+            onMouseLeave={() => setClicked(false)}
+          />
+          <Text mt={30} style={{ fontSize: "20px" }}>
+            ( pat the shiba dog )
+          </Text>
+        </Flex>
+      </Flex>
       <Flex
         align="center"
         px={20}
-        style={{ background: "#2C2C2C", width: "100%", height: "5\\vh" }}
+        style={{ background: "#2C2C2C", width: "100%", height: "5vh" }}
       ></Flex>
     </Flex>
   );

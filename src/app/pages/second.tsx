@@ -19,14 +19,16 @@ export default function SecondPage() {
         background: "#FEF7ED",
       }}
     >
-      <Group
+      <Flex
+        direction={{ xs: "column", sm: "row" }}
+        align='center'
+        justify='center'
         style={{
           height: "100vh",
-          width: '100vw'
+          width: "100vw",
         }}
-        grow
       >
-        <Flex direction="column" justify="center" p={50}>
+        <Flex direction="column" justify="center" p={{xs: 30, sm: 50}} w='100%'>
           <Text
             style={{
               fontWeight: "bold",
@@ -41,7 +43,7 @@ export default function SecondPage() {
             style={{
               fontWeight: "normal",
               color: "#2C2C2C",
-              fontSize: "80px",
+              fontSize: "70px",
               lineHeight: "1",
             }}
           >
@@ -56,10 +58,11 @@ export default function SecondPage() {
               lineHeight: "1",
             }}
           >
-            Gain insights into my professional journey and the diverse experiences I&#39;ve accumulated over the years.
+            Gain insights into my professional journey and the diverse
+            experiences I&#39;ve accumulated over the years.
           </Text>
         </Flex>
-        <Flex direction="column" justify="center">
+        <Flex direction="column" justify="center"  p={{xs: 30, sm: 50}} w='100%'>
           <Timeline
             active={1}
             bulletSize={24}
@@ -88,12 +91,12 @@ export default function SecondPage() {
                 Your company
               </Text>
               <Text size="md" mt={4}>
-                May 2024
+                May 2024 - Future
               </Text>
             </TimelineItem>
           </Timeline>
         </Flex>
-      </Group>
+      </Flex>
       <Flex
         align="center"
         px={20}
