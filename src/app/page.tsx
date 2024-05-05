@@ -44,7 +44,7 @@ export default function Home() {
             lineHeight: 1,
           }}
         >
-          Oh, you reach this section?
+          Oh, you reached this section?
           <br /> I guess you&#39;re interested about me, Let&#39;s connect!
         </Text>
         <Flex direction="row" gap={10} justify="center" align="center" mt={15}>
