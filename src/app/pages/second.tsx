@@ -83,7 +83,7 @@ export default function SecondPage() {
                 Cryptex Consulting Services Ltd Co.
               </Text>
               <Text size="md" mt={4}>
-                June 2023 - May 2024
+                June 2023 - June 2024
               </Text>
             </TimelineItem>
             <TimelineItem title="Currently looking for work">
@@ -91,7 +91,7 @@ export default function SecondPage() {
                 Your company
               </Text>
               <Text size="md" mt={4}>
-                May 2024 - Future
+                June 2024 - Future
               </Text>
             </TimelineItem>
           </Timeline>
