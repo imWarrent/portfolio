@@ -6,6 +6,7 @@ const skills = [
   "Axios",
   "NestJS",
   "Prisma",
+  "WebSocket",
   "Novu",
   "ReactJS",
   "Tailwind",
@@ -23,7 +24,7 @@ const skills = [
   "MS Access",
   "PostgreSQL",
   "Firebase",
-  "and a lil bit of Flutter.",
+  "and a lil bit of Flutter, Docker and CI/CD.",
 ];
 
 export default function FourthPage() {
