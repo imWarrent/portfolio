@@ -24,7 +24,14 @@ const skills = [
   "MS Access",
   "PostgreSQL",
   "Firebase",
-  "and a lil bit of Flutter, Docker and CI/CD.",
+  "Flutter",
+  "Docker",
+  "Unity",
+  "MongoDB",
+  "Jira",
+  "Agile",
+  "AWS Infrastructure",
+  "and a lil bit knowledge of CI/CD and Kubernetes.",
 ];
 
 export default function FourthPage() {

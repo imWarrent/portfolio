@@ -5,7 +5,7 @@ import "@mantine/core/styles.css";
 import { Darker_Grotesque } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Warrent DEV",
   description: "Ren portfolio",
 };
 

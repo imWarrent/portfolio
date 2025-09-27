@@ -8,6 +8,9 @@ import {
   Text,
 } from "@mantine/core";
 import {
+  IconBus,
+  IconBusFilled,
+  IconCalculator,
   IconCalendar,
   IconDeviceGamepad,
   IconDeviceGamepad2,
@@ -17,6 +20,22 @@ import {
 import Link from "next/link";
 
 const charactersList = [
+  {
+    id: "transport",
+    icon: <IconBus />,
+    label: "Para Po (Project OTW)",
+    description: "Transportation App",
+    content:
+      "Para Po is a transportation app designed to help commuters easily navigate from point A to point B. Built with Flutter and powered by MongoDB, it provides a smooth experience for finding routes and directions. The app also features a community-driven update system, where users can check real-time road situations, traffic, and events reported by fellow commuters. Think of it as a helpful companion to make commuting in the city less stressful and more connected.",
+  },
+  {
+    id: "manufacture",
+    icon: <IconCalculator />,
+    label: "Manufacturing ERP",
+    description: "Manufacturing ERP",
+    content:
+      "A comprehensive ERP system built for manufacturing operations, streamlining processes from inventory management to production tracking. It helps businesses monitor resources, manage workflows, and optimize efficiency. With real-time data and reporting, the system ensures smarter decision-making and smoother operations across departments.",
+  },
   {
     id: "game",
     icon: <IconDeviceGamepad />,

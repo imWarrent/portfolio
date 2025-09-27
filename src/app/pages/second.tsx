@@ -64,7 +64,7 @@ export default function SecondPage() {
         </Flex>
         <Flex direction="column" justify="center"  p={{xs: 30, sm: 50}} w='100%'>
           <Timeline
-            active={1}
+            active={3}
             bulletSize={24}
             lineWidth={4}
             color="#2C2C2C"
@@ -78,7 +78,7 @@ export default function SecondPage() {
                 February 2023 - May 2023
               </Text>
             </TimelineItem>
-            <TimelineItem title="Software Developer Associate I">
+            <TimelineItem title="Associate Software Developer">
               <Text c="dimmed" size="lg">
                 Cryptex Consulting Services Ltd Co.
               </Text>
@@ -86,14 +86,30 @@ export default function SecondPage() {
                 June 2023 - June 2024
               </Text>
             </TimelineItem>
-            <TimelineItem title="Currently looking for work">
+            <TimelineItem title="Senior Software Developer">
+              <Text c="dimmed" size="lg">
+                Cryptex Consulting Services Ltd Co.
+              </Text>
+              <Text size="md" mt={4}>
+                June 2024 - May 2025
+              </Text>
+            </TimelineItem>
+            <TimelineItem title="Software Developer">
+              <Text c="dimmed" size="lg">
+                Career EDGE
+              </Text>
+              <Text size="md" mt={4}>
+                April 2025 - Present
+              </Text>
+            </TimelineItem>
+            {/* <TimelineItem title="Currently looking for work">
               <Text c="dimmed" size="lg">
                 Your company
               </Text>
               <Text size="md" mt={4}>
-                June 2024 - Future
+                Present - Future
               </Text>
-            </TimelineItem>
+            </TimelineItem> */}
           </Timeline>
         </Flex>
       </Flex>

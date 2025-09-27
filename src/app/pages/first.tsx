@@ -117,7 +117,7 @@ export default function FirstPage() {
             src="/gif/shiba.gif"
             alt="shiba"
             style={{ width: "60%", transform: "scaleX(-1)", cursor: "grab" }}
-            onClick={() => setClicked(true)}
+            onMouseEnter={() => setClicked(true)}
             onMouseLeave={() => setClicked(false)}
           />
           <Text mt={30} style={{ fontSize: "20px" }}>
