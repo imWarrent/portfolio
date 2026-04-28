@@ -1,130 +1,102 @@
-import { Flex, Group, Text } from "@mantine/core";
+"use client";
 
-const skills = [
-  "JavaScript",
-  "NodeJS",
-  "Axios",
-  "NestJS",
-  "Prisma",
-  "WebSocket",
-  "Novu",
-  "ReactJS",
-  "Tailwind",
-  "Bootstrap",
-  "Mantine",
-  "MaterialUI",
-  "NextJS",
-  "C#",
-  "PHP",
-  "MeiliSearch",
-  "Git",
-  "SourceTree",
-  "MariaDB",
-  "MySQL",
-  "MS Access",
-  "PostgreSQL",
-  "Firebase",
-  "Flutter",
-  "Docker",
-  "Unity",
-  "MongoDB",
-  "Jira",
-  "Agile",
-  "AWS Infrastructure",
-  "and a lil bit knowledge of CI/CD and Kubernetes.",
+import {
+  IconCode,
+  IconServer,
+  IconDatabase,
+  IconCloud,
+  IconTool,
+} from "@tabler/icons-react";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import styles from "./fourth.module.css";
+
+const skillCategories = [
+  {
+    title: "Frontend",
+    icon: <IconCode size={22} />,
+    skills: [
+      "JavaScript",
+      "TypeScript",
+      "ReactJS",
+      "NextJS",
+      "Flutter",
+      "Tailwind",
+      "Bootstrap",
+      "Mantine",
+      "MaterialUI",
+    ],
+  },
+  {
+    title: "Backend",
+    icon: <IconServer size={22} />,
+    skills: ["NodeJS", "NestJS", "PHP", "C#", "Prisma", "WebSocket", "Axios"],
+  },
+  {
+    title: "Database",
+    icon: <IconDatabase size={22} />,
+    skills: [
+      "PostgreSQL",
+      "MySQL",
+      "MariaDB",
+      "MongoDB",
+      "Firebase",
+      "MeiliSearch",
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    icon: <IconCloud size={22} />,
+    skills: ["Docker", "AWS", "CI/CD", "Kubernetes"],
+  },
+  {
+    title: "Tools & Workflow",
+    icon: <IconTool size={22} />,
+    skills: ["Git", "SourceTree", "Jira", "Agile", "Unity", "Novu"],
+  },
 ];
 
-export default function FourthPage() {
-  const items = skills.map((item) => (
-    <Flex
-      key={item}
-      justify="center"
-      align="center"
-      p={10}
-      style={{
-        background: "white",
-        border: "2px solid black",
-        borderRadius: "10px",
-      }}
-    >
-      <Text size="25px">{item}</Text>
-    </Flex>
-  ));
+export default function SkillsSection() {
+  const sectionRef = useScrollReveal();
+
   return (
-    <Flex
-      direction="column"
-      align="center"
-      justify="center"
-      style={{
-        height: "auto",
-        background: "#FEF7ED",
-      }}
-    >
-      <Flex
-        direction={{ xs: "column-reverse", sm: "row" }}
-        h={{ xs: "auto", md: "100vh" }}
-        align="center"
-        justify="center"
-        w="100vw"
-      >
-        <Flex
-          direction="column"
-          justify="center"
-          align="center"
-          mb={20}
-          px={{ xs: 20, md: 50 }}
-        >
-          <Flex
-            p={10}
-            gap={10}
-            wrap="wrap"
-            style={{
-              background: "white",
-              border: "3px solid black",
-              width: "100%",
-            }}
-          >
-            {...items}
-          </Flex>
-        </Flex>
-        <Flex direction="column" align="flex-end" p={50}>
-          <Text
-            style={{
-              fontWeight: "bold",
-              color: "#2C2C2C",
-              fontSize: "80px",
-              lineHeight: "1",
-            }}
-          >
-            SKILLS
-          </Text>
-          <Text
-            style={{
-              fontWeight: "normal",
-              color: "#2C2C2C",
-              fontSize: "80px",
-              lineHeight: "1",
-            }}
-          >
-            SECTION
-          </Text>
-          <Text
-            mt={25}
-            style={{
-              fontWeight: "normal",
-              color: "#2C2C2C",
-              fontSize: "25px",
-              lineHeight: "1",
-              textAlign: "end",
-            }}
-          >
-            Provides a snapshot of the technical and professional abilities I
-            bring to the table. I&#39;m a fast learner and constantly seeking
-            opportunities to expand my knowledge base, ensuring I can adapt and
-            contribute effectively in dynamic environments.
-          </Text>
-        </Flex>
-      </Flex>
-    </Flex>
+    <section ref={sectionRef} id="skills" className={styles.section}>
+      <div className={styles.container}>
+        {/* Header */}
+        <div className={styles.header}>
+          <div className={styles.headerContent} data-animate="from-right" data-delay="0">
+            <p className={styles.sectionLabel}>TOOLKIT</p>
+            <h2 className={styles.sectionTitle}>
+              Skills &
+              <br />
+              <span className={styles.titleOutline}>Technologies</span>
+            </h2>
+            <p className={styles.sectionDesc}>
+              A fast learner constantly seeking opportunities to expand my
+              knowledge — here&apos;s a snapshot of the tools and technologies I
+              bring to every project.
+            </p>
+          </div>
+        </div>
+
+        {/* Skills Grid */}
+        <div className={styles.grid}>
+          {skillCategories.map((category, index) => (
+            <div key={index} className={styles.categoryCard} data-animate data-delay={`${index * 0.1}`}>
+              <div className={styles.categoryHeader}>
+                <span className={styles.categoryIcon}>{category.icon}</span>
+                <h3 className={styles.categoryTitle}>{category.title}</h3>
+              </div>
+              <div className={styles.skillsList}>
+                {category.skills.map((skill) => (
+                  <span key={skill} className={styles.skillPill}>
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
