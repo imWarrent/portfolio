@@ -1,210 +1,205 @@
-import {
-  Accordion,
-  AccordionControl,
-  AccordionItem,
-  AccordionPanel,
-  Flex,
-  Group,
-  Text,
-} from "@mantine/core";
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
 import {
   IconBus,
-  IconBusFilled,
-  IconCalculator,
-  IconCalendar,
   IconDeviceGamepad,
-  IconDeviceGamepad2,
-  IconMusic,
-  IconShoppingBag,
+  IconExternalLink,
+  IconPhoto,
+  IconPaw,
+  IconSchool,
+  IconSpy,
+  IconFileText,
 } from "@tabler/icons-react";
-import Link from "next/link";
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import ImageModal from "../../components/ImageModal";
+import styles from "./third.module.css";
 
-const charactersList = [
+interface Project {
+  icon: React.ReactNode;
+  title: string;
+  category: string;
+  description: string;
+  tags: string[];
+  color: string;
+  /** External link (e.g. live site, repo) */
+  link?: string;
+  /** Image paths in /public — e.g. ["/projects/parapo-1.png", "/projects/parapo-2.png"] */
+  images?: string[];
+}
+
+const projects: Project[] = [
   {
-    id: "transport",
-    icon: <IconBus />,
-    label: "Para Po (Project OTW)",
-    description: "Transportation App",
-    content:
-      "Para Po is a transportation app designed to help commuters easily navigate from point A to point B. Built with Flutter and powered by MongoDB, it provides a smooth experience for finding routes and directions. The app also features a community-driven update system, where users can check real-time road situations, traffic, and events reported by fellow commuters. Think of it as a helpful companion to make commuting in the city less stressful and more connected.",
+    icon: <IconBus size={24} />,
+    title: "Para Po",
+    category: "Mobile App",
+    description:
+      "A commuter-focused mobile app providing real-time, community-driven updates on traffic, routes, and road conditions to make daily travel smarter and less stressful.",
+    tags: ["Flutter", "Firebase", "Maps API", "Real-time Data"],
+    color: "#c2410c",
+    // link: "https://harvard-resume-builder-rrennth.vercel.app/",
+    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
   },
   {
-    id: "manufacture",
-    icon: <IconCalculator />,
-    label: "Manufacturing ERP",
-    description: "Manufacturing ERP",
-    content:
-      "A comprehensive ERP system built for manufacturing operations, streamlining processes from inventory management to production tracking. It helps businesses monitor resources, manage workflows, and optimize efficiency. With real-time data and reporting, the system ensures smarter decision-making and smoother operations across departments.",
+    icon: <IconDeviceGamepad size={24} />,
+    title: "Social Circle",
+    category: "Game Development",
+    description:
+      "An educational RPG set during the pandemic, blending storytelling and gameplay to teach health protocols and decision-making through immersive quests.",
+    tags: ["Unity", "C#", "Game Design", "Narrative Systems"],
+    color: "#15803d",
+    // link: "https://harvard-resume-builder-rrennth.vercel.app/",
+    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
   },
   {
-    id: "game",
-    icon: <IconDeviceGamepad />,
-    label: "Social Circle",
-    description: "COVID19 Role Playing Game",
-    content:
-      "It is an Educational Role-Playing Game about our life during Global Pandemic, it will teach you safety protocols, and various information about corona viruses while doing some quest and enjoying its story. I used C# language to develop this game and different types of Unity Saving System like JSON, PlayerPrefs and etc. for player data.",
+    icon: <IconPaw size={24} />,
+    title: "Pawtrol",
+    category: "Web App",
+    description:
+      "A platform connecting pet owners and veterinarians, featuring AI-assisted symptom checking, appointment coordination, and pet care guidance.",
+    tags: ["Next.js", "AI Integration", "Node.js", "MongoDB"],
+    color: "#7c3aed",
+    link: "https://pawtrol-rrenth.vercel.app/",
+    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
   },
   {
-    id: "game2",
-    icon: <IconDeviceGamepad2 />,
-    label: "Math Quiz Game",
-    description: "Mind games",
-    content:
-      "It is an Educational Game good for children that want to test their solving capabilities, they will answer a math problems and it gets harder for every level that they achieve,  I used C# language to develop this game and different types of Unity Saving System like JSON, PlayerPrefs and etc. for player data. I also used PlayFab for its Online Leaderboards.",
+    icon: <IconSchool size={24} />,
+    title: "UniDiscover",
+    category: "Platform",
+    description:
+      "A LinkedIn-style platform tailored for students and institutions, helping users discover scholarships, universities, and opportunities aligned with their goals.",
+    tags: ["React", "NestJS", "PostgreSQL", "Search Engine"],
+    color: "#2563eb",
+    // link: "https://harvard-resume-builder-rrennth.vercel.app/",
+    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
   },
   {
-    id: "shoes",
-    icon: <IconShoppingBag />,
-    label: "Hyper Shoes",
-    description: "Sales and Inventory System",
-    content:
-      "It is a Java System with Point of Sales and Inventory System, you can monitor your sales, stocks and users. the user can also print their receipt. I used Java for this application and MySQL for its database",
+    icon: <IconSpy size={24} />,
+    title: "Among Words",
+    category: "Web Game",
+    description:
+      "A multiplayer word-based social deduction game inspired by impostor mechanics, where players identify the odd one out through clever guessing and deception.",
+    tags: ["WebSockets", "Node.js", "Game Logic", "Real-time"],
+    color: "#dc2626",
+    // link: "https://harvard-resume-builder-rrennth.vercel.app/",
+    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
   },
   {
-    id: "music",
-    icon: <IconMusic />,
-    label: "SpotiFINDS",
-    description: "Music Application",
-    content:
-      "It is a Music Application where the user can search track, albums, playlist and artist and also lyrics. the user can also download the music. I used ReactJS for this application and Bootstrap for its design and Spotify from RapidAPI for its API.",
-  },
-  {
-    id: "booking",
-    icon: <IconCalendar />,
-    label: "Event Booking System",
-    description: "Music Application",
-    content:
-      "It is a Booking System where the client can choose the event package that they want and reserve a slot for it, the admin can accept or decline it. Admin can also monitor their sales, bookings and etc. I used Bootstrap, PHP, MySQL for this website.",
+    icon: <IconFileText size={24} />,
+    title: "Resume Builder",
+    category: "Web App",
+    description:
+      "A dynamic resume builder that helps users create professional, ATS-friendly resumes with customizable templates and real-time previews.",
+    tags: ["Next.js", "PDF Generation", "Form Handling", "UI/UX"],
+    color: "#0f766e",
+    link: "https://harvard-resume-builder-rrennth.vercel.app/",
   },
 ];
 
-export default function ThirdPage() {
-  const items = charactersList.map((item) => (
-    <AccordionItem value={item.id} key={item.label}>
-      <AccordionControl icon={item.icon}>
-        <Text style={{ fontSize: "20px" }}>{item.label}</Text>
-      </AccordionControl>
-      <AccordionPanel>
-        <Text size="lg">{item.content}</Text>
-      </AccordionPanel>
-    </AccordionItem>
-  ));
+export default function ProjectsSection() {
+  const sectionRef = useScrollReveal();
+  const [modalImages, setModalImages] = useState<string[]>([]);
+  const [modalTitle, setModalTitle] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = (images: string[], title: string) => {
+    setModalImages(images);
+    setModalTitle(title);
+    setModalOpen(true);
+  };
 
   return (
-    <Flex
-      direction="column"
-      align="center"
-      justify="center"
-      style={{
-        height: "auto",
-        background: "#FEF7ED",
-      }}
-    >
-      <Flex
-        direction={{ xs: "column-reverse", sm: "row" }}
-        align="center"
-        justify="center"
-        h={{ xs: "auto", md: "100vh" }}
-        w="100vw"
-      >
-        <Flex
-          direction="column"
-          justify="center"
-          px={{ xs: 20, md: 50 }}
-          w="100%"
-        >
-          <Flex
-            mb={10}
-            p={5}
-            justify="center"
-            align="center"
-            style={{
-              background: "white",
-              width: "100%",
-              border: "3px solid black",
-            }}
-          >
-            <Text style={{ fontSize: "20px" }}>PROJECT LIST</Text>
-          </Flex>
-          <Accordion
-            chevronPosition="right"
-            variant="container"
-            styles={{
-              control: {
-                background: "white",
-              },
-              panel: {
-                background: "white",
-              },
-            }}
-            style={{
-              width: "100%",
-              border: "3px solid black",
-            }}
-            defaultValue="game"
-          >
-            {items}
-          </Accordion>
-          <Link href={"https://github.com/imWarrent"} target="_blank">
-            <Flex
-              mt={10}
-              mb={50}
-              p={5}
-              justify="center"
-              align="center"
-              style={{
-                background: "white",
-                width: "100%",
-                border: "3px solid black",
-              }}
+    <>
+      <section ref={sectionRef} id="projects" className={styles.section}>
+        <div className={styles.container}>
+          {/* Header */}
+          <div className={styles.header}>
+            <div className={styles.headerContent} data-animate="from-right" data-delay="0">
+              <p className={styles.sectionLabel}>SHOWCASE</p>
+              <h2 className={styles.sectionTitle}>
+                Featured
+                <br />
+                <span className={styles.titleOutline}>Projects</span>
+              </h2>
+              <p className={styles.sectionDesc}>
+                A curated selection of projects that showcase my capabilities
+                across web, mobile, and game development.
+              </p>
+            </div>
+          </div>
+
+          {/* Project Grid */}
+          <div className={styles.grid}>
+            {projects.map((project, index) => (
+              <div key={index} className={styles.card} data-animate data-delay={`${index * 0.08}`}>
+                <div className={styles.cardTop}>
+                  <div
+                    className={styles.cardIcon}
+                    style={{ color: project.color }}
+                  >
+                    {project.icon}
+                  </div>
+                  {/* Action buttons */}
+                  <div className={styles.cardActions}>
+                    {project.images && project.images.length > 0 && (
+                      <button
+                        className={styles.cardActionBtn}
+                        onClick={() => openModal(project.images!, project.title)}
+                        aria-label={`View ${project.title} screenshots`}
+                        title="View screenshots"
+                      >
+                        <IconPhoto size={16} />
+                      </button>
+                    )}
+                    {project.link && (
+                      <Link
+                        href={project.link}
+                        target="_blank"
+                        className={styles.cardActionBtn}
+                        aria-label={`Visit ${project.title}`}
+                        title="Visit project"
+                      >
+                        <IconExternalLink size={16} />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+                <span className={styles.cardCategory}>{project.category}</span>
+                <h3 className={styles.cardTitle}>{project.title}</h3>
+                <p className={styles.cardDesc}>{project.description}</p>
+                <div className={styles.cardTags}>
+                  {project.tags.map((tag) => (
+                    <span key={tag} className={styles.cardTag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* GitHub CTA */}
+          <div className={styles.githubCta} data-animate data-delay="0.2">
+            <Link
+              href="https://github.com/imWarrent"
+              target="_blank"
+              className={styles.githubLink}
             >
-              <Text style={{ fontSize: "20px" }}>
-                VISIT MY <u>GITHUB ACCOUNT</u> FOR MORE !
-              </Text>
-            </Flex>
-          </Link>
-        </Flex>
-        <Flex direction="column" align="flex-end" p={50} w="100%">
-          <Text
-            style={{
-              fontWeight: "bold",
-              color: "#2C2C2C",
-              fontSize: "80px",
-              lineHeight: "1",
-            }}
-          >
-            SAMPLE
-          </Text>
-          <Text
-            style={{
-              fontWeight: "normal",
-              color: "#2C2C2C",
-              fontSize: "80px",
-              lineHeight: "1",
-            }}
-          >
-            PROJECTS
-          </Text>
-          <Text
-            mt={25}
-            style={{
-              fontWeight: "normal",
-              color: "#2C2C2C",
-              fontSize: "25px",
-              lineHeight: "1",
-              textAlign: "end",
-            }}
-          >
-            Excited to share my work with you! You&#39;ll find a curated
-            selection of projects that showcase my capabilities.
-          </Text>
-        </Flex>
-      </Flex>
-      <Flex
-        align="center"
-        px={20}
-        style={{ background: "#2C2C2C", width: "100%", height: "5vh" }}
+              <IconExternalLink size={18} />
+              View more on GitHub
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Modal */}
+      <ImageModal
+        images={modalImages}
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title={modalTitle}
       />
-    </Flex>
+    </>
   );
 }

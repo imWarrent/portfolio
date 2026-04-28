@@ -1,123 +1,98 @@
-import {
-  Box,
-  Flex,
-  Group,
-  Stack,
-  Text,
-  Timeline,
-  TimelineItem,
-} from "@mantine/core";
-import Link from "next/link";
-export default function SecondPage() {
+"use client";
+
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+import styles from "./second.module.css";
+
+const experiences = [
+  {
+    role: "Software Engineer",
+    company: "Career EDGE",
+    period: "April 2025 — Present",
+    description:
+      "Building scalable web applications and driving technical decisions for client projects. Working with modern JavaScript frameworks and cloud infrastructure.",
+    tags: ["AWS", "Next.js", "Node.js", "MongoDB"],
+    current: true,
+  },
+  {
+    role: "Lead Software Engineer",
+    company: "Cryptex Consulting Services Ltd Co.",
+    period: "May 2024 — April 2025",
+    description:
+      "Led development of enterprise applications, mentored junior developers, and architected solutions for complex business requirements.",
+    tags: ["NestJS", "Next.js", "PostgreSQL", "AWS"],
+    current: false,
+  },
+  {
+    role: "Associate Software Engineer",
+    company: "Cryptex Consulting Services Ltd Co.",
+    period: "May 2023 — May 2024",
+    description:
+      "Led development of enterprise applications, mentored junior developers, and architected solutions for complex business requirements.",
+    tags: ["NestJS", "Next.js", "PostgreSQL", "AWS"],
+    current: false,
+  },
+  {
+    role: "Intern",
+    company: "Cryptex Consulting Services Ltd Co.",
+    period: "February 2023 — May 2023",
+    description:
+      "Gained hands-on experience in software development workflows, learned enterprise coding standards, and contributed to production codebases.",
+    tags: ["JavaScript", "Git", "Agile"],
+    current: false,
+  },
+];
+
+export default function ExperienceSection() {
+  const sectionRef = useScrollReveal();
+
   return (
-    <Flex
-      direction="column"
-      align="center"
-      justify="center"
-      style={{
-        height: "auto",
-        background: "#FEF7ED",
-      }}
-    >
-      <Flex
-        direction={{ xs: "column", sm: "row" }}
-        align='center'
-        justify='center'
-        style={{
-          height: "100vh",
-          width: "100vw",
-        }}
-      >
-        <Flex direction="column" justify="center" p={{xs: 30, sm: 50}} w='100%'>
-          <Text
-            style={{
-              fontWeight: "bold",
-              color: "#2C2C2C",
-              fontSize: "80px",
-              lineHeight: "1",
-            }}
-          >
-            WORK
-          </Text>
-          <Text
-            style={{
-              fontWeight: "normal",
-              color: "#2C2C2C",
-              fontSize: "70px",
-              lineHeight: "1",
-            }}
-          >
-            EXPERIENCE
-          </Text>
-          <Text
-            mt={25}
-            style={{
-              fontWeight: "normal",
-              color: "#2C2C2C",
-              fontSize: "25px",
-              lineHeight: "1",
-            }}
-          >
-            Gain insights into my professional journey and the diverse
-            experiences I&#39;ve accumulated over the years.
-          </Text>
-        </Flex>
-        <Flex direction="column" justify="center"  p={{xs: 30, sm: 50}} w='100%'>
-          <Timeline
-            active={3}
-            bulletSize={24}
-            lineWidth={4}
-            color="#2C2C2C"
-            styles={{ itemTitle: { fontSize: "25px" } }}
-          >
-            <TimelineItem title="Internship">
-              <Text c="dimmed" size="lg">
-                Cryptex Consulting Services Ltd Co.
-              </Text>
-              <Text size="md" mt={4}>
-                February 2023 - May 2023
-              </Text>
-            </TimelineItem>
-            <TimelineItem title="Associate Software Developer">
-              <Text c="dimmed" size="lg">
-                Cryptex Consulting Services Ltd Co.
-              </Text>
-              <Text size="md" mt={4}>
-                June 2023 - June 2024
-              </Text>
-            </TimelineItem>
-            <TimelineItem title="Senior Software Developer">
-              <Text c="dimmed" size="lg">
-                Cryptex Consulting Services Ltd Co.
-              </Text>
-              <Text size="md" mt={4}>
-                June 2024 - May 2025
-              </Text>
-            </TimelineItem>
-            <TimelineItem title="Software Developer">
-              <Text c="dimmed" size="lg">
-                Career EDGE
-              </Text>
-              <Text size="md" mt={4}>
-                April 2025 - Present
-              </Text>
-            </TimelineItem>
-            {/* <TimelineItem title="Currently looking for work">
-              <Text c="dimmed" size="lg">
-                Your company
-              </Text>
-              <Text size="md" mt={4}>
-                Present - Future
-              </Text>
-            </TimelineItem> */}
-          </Timeline>
-        </Flex>
-      </Flex>
-      <Flex
-        align="center"
-        px={20}
-        style={{ background: "#2C2C2C", width: "100%", height: "5\\vh" }}
-      ></Flex>
-    </Flex>
+    <section ref={sectionRef} id="experience" className={styles.section}>
+      <div className={styles.container}>
+        {/* Header */}
+        <div className={styles.header}>
+          <div className={styles.headerContent} data-animate="from-left" data-delay="0">
+            <p className={styles.sectionLabel}>CAREER PATH</p>
+            <h2 className={styles.sectionTitle}>
+              Work
+              <br />
+              <span className={styles.titleOutline}>Experience</span>
+            </h2>
+            <p className={styles.sectionDesc}>
+              A journey of continuous growth — from intern to senior developer,
+              each role shaping my expertise and perspective.
+            </p>
+          </div>
+        </div>
+
+        {/* Timeline */}
+        <div className={styles.timeline}>
+          <div className={styles.timelineLine} data-animate="line" data-delay="0.1" />
+          {experiences.map((exp, index) => (
+            <div key={index} className={styles.card} data-animate data-delay={`${0.15 + index * 0.12}`}>
+              <div className={styles.cardDot}>
+                {exp.current && <span className={styles.cardDotPulse} />}
+              </div>
+              <div className={styles.cardContent}>
+                <div className={styles.cardHeader}>
+                  <div>
+                    <h3 className={styles.role}>{exp.role}</h3>
+                    <p className={styles.company}>{exp.company}</p>
+                  </div>
+                  <span className={styles.period}>{exp.period}</span>
+                </div>
+                <p className={styles.description}>{exp.description}</p>
+                <div className={styles.tags}>
+                  {exp.tags.map((tag) => (
+                    <span key={tag} className={styles.tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
