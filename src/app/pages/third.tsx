@@ -49,8 +49,8 @@ const projects: Project[] = [
       "An educational RPG set during the pandemic, blending storytelling and gameplay to teach health protocols and decision-making through immersive quests.",
     tags: ["Unity", "C#", "Game Design", "Narrative Systems"],
     color: "#15803d",
-    // link: "https://harvard-resume-builder-rrennth.vercel.app/",
-    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
+    link: "https://drive.google.com/file/d/1dT1oyIK_ZF6P6N9-hvgSBPb8BrJAWoiH/view?usp=sharing",
+    images: ["/img/sc-1.png", "/vid/sc-1.mp4", "/img/sc-2.png", "/img/sc-3.png", "/img/sc-4.jpg", "/img/sc-5.jpg", "/img/sc-6.jpg", "/img/sc-7.jpg", "/img/sc-8.jpg"],
   },
   {
     icon: <IconPaw size={24} />,
@@ -72,7 +72,7 @@ const projects: Project[] = [
     tags: ["React", "NestJS", "PostgreSQL", "Search Engine"],
     color: "#2563eb",
     // link: "https://harvard-resume-builder-rrennth.vercel.app/",
-    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
+    images: ["/vid/uni-1.mp4", "/vid/uni-2.mp4", "/vid/uni-3.mp4", "/vid/uni-4.mp4", "/img/uni-1.png"],
   },
   {
     icon: <IconSpy size={24} />,
@@ -82,8 +82,8 @@ const projects: Project[] = [
       "A multiplayer word-based social deduction game inspired by impostor mechanics, where players identify the odd one out through clever guessing and deception.",
     tags: ["WebSockets", "Node.js", "Game Logic", "Real-time"],
     color: "#dc2626",
-    // link: "https://harvard-resume-builder-rrennth.vercel.app/",
-    // images: ["/projects/parapo-1.png", "/projects/parapo-2.png"],
+    link: "https://under-construction-snowy.vercel.app/",
+    images: ["/img/aw-1.mp4", "/img/aw-1.png"],
   },
   {
     icon: <IconFileText size={24} />,
