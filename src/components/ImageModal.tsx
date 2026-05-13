@@ -12,6 +12,42 @@ interface ImageModalProps {
   title?: string;
 }
 
+function isVideo(src: string) {
+  return /\.mp4(\?.*)?$/i.test(src);
+}
+
+function MediaItem({ src, alt }: { src: string; alt: string }) {
+  if (isVideo(src)) {
+    return (
+      <video
+        key={src}
+        src={src}
+        controls
+        autoPlay
+        loop
+        playsInline
+        style={{
+          maxWidth: "100%",
+          maxHeight: "100%",
+          objectFit: "contain",
+          display: "block",
+        }}
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      style={{ objectFit: "contain" }}
+      sizes="90vw"
+      priority
+    />
+  );
+}
+
 export default function ImageModal({ images, isOpen, onClose, title }: ImageModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -46,6 +82,9 @@ export default function ImageModal({ images, isOpen, onClose, title }: ImageModa
 
   if (!isOpen || images.length === 0) return null;
 
+  const currentSrc = images[currentIndex];
+  const currentIsVideo = isVideo(currentSrc);
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
@@ -64,15 +103,14 @@ export default function ImageModal({ images, isOpen, onClose, title }: ImageModa
           </button>
         </div>
 
-        {/* Image */}
-        <div className={styles.imageWrapper}>
-          <Image
-            src={images[currentIndex]}
-            alt={`${title || "Project"} screenshot ${currentIndex + 1}`}
-            fill
-            style={{ objectFit: "contain" }}
-            sizes="90vw"
-            priority
+        {/* Media */}
+        <div
+          className={styles.imageWrapper}
+          style={currentIsVideo ? { display: "flex", alignItems: "center", justifyContent: "center" } : undefined}
+        >
+          <MediaItem
+            src={currentSrc}
+            alt={`${title || "Project"} media ${currentIndex + 1}`}
           />
         </div>
 
@@ -88,12 +126,12 @@ export default function ImageModal({ images, isOpen, onClose, title }: ImageModa
 
             {/* Dots */}
             <div className={styles.dots}>
-              {images.map((_, i) => (
+              {images.map((src, i) => (
                 <button
                   key={i}
                   className={`${styles.dot} ${i === currentIndex ? styles.dotActive : ""}`}
                   onClick={() => setCurrentIndex(i)}
-                  aria-label={`Go to image ${i + 1}`}
+                  aria-label={`Go to ${isVideo(src) ? "video" : "image"} ${i + 1}`}
                 />
               ))}
             </div>

@@ -6,6 +6,7 @@ import {
   IconDatabase,
   IconCloud,
   IconTool,
+  IconBrain,
 } from "@tabler/icons-react";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import styles from "./fourth.module.css";
@@ -52,6 +53,19 @@ const skillCategories = [
     title: "Tools & Workflow",
     icon: <IconTool size={22} />,
     skills: ["Git", "SourceTree", "Jira", "Agile", "Unity", "Novu"],
+  },
+  {
+    title: "AI & LLM",
+    icon: <IconBrain size={22} />,
+    skills: [
+      "Claude Code",
+      "OpenAI Codex",
+      "GitHub Copilot",
+      "LLM Integration",
+      "Prompt Engineering",
+      "Anthropic API",
+      "OpenAI API",
+    ],
   },
 ];
 

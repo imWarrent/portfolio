@@ -5,7 +5,7 @@ import "@mantine/core/styles.css";
 import { Inter, Darker_Grotesque } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "Warrent Padolina — Software Developer",
+  title: "Warrent Padolina - Software Developer",
   description:
     "Portfolio of Warrent Padolina, a passionate Software Developer specializing in full-stack web development, mobile apps, and game development.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Warrent Padolina" }],
   openGraph: {
-    title: "Warrent Padolina — Software Developer",
+    title: "Warrent Padolina - Software Developer",
     description:
       "Portfolio of Warrent Padolina, a passionate Software Developer.",
     type: "website",

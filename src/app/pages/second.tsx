@@ -9,7 +9,7 @@ const experiences = [
     company: "Career EDGE",
     period: "April 2025 — Present",
     description:
-      "Building scalable web applications and driving technical decisions for client projects. Working with modern JavaScript frameworks and cloud infrastructure.",
+      "Building scalable web applications and internal tools using Next.js, Node.js, MongoDB, and AWS. Contributing to backend optimization, cloud infrastructure, and technical decisions across client projects.",
     tags: ["AWS", "Next.js", "Node.js", "MongoDB"],
     current: true,
   },
@@ -18,7 +18,7 @@ const experiences = [
     company: "Cryptex Consulting Services Ltd Co.",
     period: "May 2024 — April 2025",
     description:
-      "Led development of enterprise applications, mentored junior developers, and architected solutions for complex business requirements.",
+      "Led development of enterprise applications, mentored developers, and architected scalable backend and frontend solutions using NestJS, Next.js, PostgreSQL, and AWS, while actively participating in client meetings to align technical execution with business requirements.",
     tags: ["NestJS", "Next.js", "PostgreSQL", "AWS"],
     current: false,
   },
@@ -27,7 +27,7 @@ const experiences = [
     company: "Cryptex Consulting Services Ltd Co.",
     period: "May 2023 — May 2024",
     description:
-      "Led development of enterprise applications, mentored junior developers, and architected solutions for complex business requirements.",
+      "Developed and maintained enterprise web applications, working on backend APIs, frontend features, database integrations, and production deployments in agile teams.",
     tags: ["NestJS", "Next.js", "PostgreSQL", "AWS"],
     current: false,
   },
@@ -36,7 +36,7 @@ const experiences = [
     company: "Cryptex Consulting Services Ltd Co.",
     period: "February 2023 — May 2023",
     description:
-      "Gained hands-on experience in software development workflows, learned enterprise coding standards, and contributed to production codebases.",
+      "Contributed to frontend and backend development tasks while learning enterprise development workflows, Git collaboration, and agile software practices.",
     tags: ["JavaScript", "Git", "Agile"],
     current: false,
   },
