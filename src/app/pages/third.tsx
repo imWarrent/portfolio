@@ -83,7 +83,7 @@ const projects: Project[] = [
     tags: ["WebSockets", "Node.js", "Game Logic", "Real-time"],
     color: "#dc2626",
     link: "https://under-construction-snowy.vercel.app/",
-    images: ["/img/aw-1.mp4", "/img/aw-1.png"],
+    images: ["/img/aw-1.png", "/vid/aw-1.mp4",],
   },
   {
     icon: <IconFileText size={24} />,
